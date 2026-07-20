@@ -7,11 +7,10 @@
 <meta name="description" content="Jo Guard Heritage provides expert heritage consultancy across Victoria — heritage advice, permit and planning support, statements of heritage impact and significance assessments.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fdfdfb;
-    --bg-alt:#f2f4ee;
+    --bg:#fdfdfb;            /* ecru base — Jo wants to keep this */
     --ink:#141414;
     --ink-soft:#4a4a46;
     --black:#141414;
@@ -20,6 +19,7 @@
     --sage-deep:#5c6b50;
     --sage-soft:#a9b89c;
     --sage-tint:#eef1e9;
+    --sage-band:#9fb091;     /* section background sage */
     --line:#e0e3da;
     --white:#ffffff;
   }
@@ -36,11 +36,30 @@
   h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.15}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-  .accent{color:var(--sage-deep)}
   .eyebrow{
     font-family:'Inter',sans-serif;font-weight:500;font-size:.72rem;
     letter-spacing:.28em;text-transform:uppercase;color:var(--sage-deep);
   }
+
+  /* PLACEHOLDER (pending content from Jo) */
+  .ph{
+    border:1.5px dashed var(--sage-deep);
+    background:rgba(255,255,255,.55);
+    color:var(--ink-soft);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;font-size:.85rem;padding:22px;border-radius:4px;gap:6px;
+  }
+  .ph strong{font-weight:500;color:var(--sage-deep);letter-spacing:.04em;text-transform:uppercase;font-size:.72rem}
+
+  /* IMAGE FIGURE with hover caption (place name) */
+  .figure{position:relative;overflow:hidden;border-radius:4px}
+  .figure .cap{
+    position:absolute;left:0;right:0;bottom:0;
+    background:rgba(11,11,10,.75);color:#fff;
+    padding:10px 14px;font-size:.8rem;letter-spacing:.04em;
+    transform:translateY(100%);transition:transform .35s cubic-bezier(.22,.61,.36,1);
+  }
+  .figure:hover .cap,.figure:focus-within .cap{transform:none}
 
   /* ENTRANCE + SCROLL-REVEAL ANIMATIONS */
   @keyframes fadeUp{
@@ -72,7 +91,7 @@
     html{scroll-behavior:auto}
   }
 
-  /* NAV */
+  /* NAV — brand in Cinzel (matches the carved-serif logo face), HERITAGE reads larger */
   header.nav{
     position:sticky;top:0;z-index:50;
     background:rgba(253,253,251,.9);
@@ -81,9 +100,12 @@
     animation:fadeIn .6s ease both;
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
-  .brand{display:flex;align-items:center;gap:12px;font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:.06em;color:var(--black)}
-  .brand img{height:42px;width:auto}
-  .brand .sub{font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--sage-deep);font-family:'Inter',sans-serif;font-weight:500;align-self:flex-end;padding-bottom:6px}
+  .brand{
+    display:flex;align-items:baseline;gap:10px;
+    font-family:'Cinzel',serif;font-weight:600;
+    font-size:.95rem;letter-spacing:.1em;text-transform:uppercase;color:var(--black);
+  }
+  .brand .sub{font-size:1.3rem;font-weight:400;letter-spacing:.14em;color:var(--black)}
   .nav-links{display:flex;gap:34px;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;font-weight:400}
   .nav-links a{color:var(--ink-soft);transition:color .25s;position:relative;padding-bottom:4px}
   .nav-links a::after{
@@ -142,28 +164,31 @@
   section{padding:88px 0}
   .section-head{max-width:60ch;margin-bottom:52px}
   .section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 0}
-  .lead{font-size:1.15rem;color:var(--ink-soft)}
+
+  /* Sage band sections */
+  .sage-band{background:var(--sage-band)}
+  .sage-band .eyebrow{color:var(--black)}
+  .sage-band .section-head h2{color:var(--black-deep)}
 
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:start}
   .about-grid p{margin-bottom:18px;color:var(--ink-soft)}
-  .cred-card{
-    background:var(--white);border:1px solid var(--line);border-radius:4px;padding:32px;
-    border-top:3px solid var(--sage);
+  .about-photo{aspect-ratio:3/4;min-height:380px}
+  .glance{
+    margin-top:56px;background:var(--white);border:1px solid var(--line);
+    border-top:3px solid var(--sage);border-radius:4px;padding:32px 36px;
     transition:transform .35s ease, box-shadow .35s ease;
   }
-  .cred-card:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(20,20,20,.08)}
-  .cred-card h3{font-size:1.5rem;margin-bottom:18px}
-  .cred-card ul{list-style:none}
-  .cred-card li{padding:12px 0;border-bottom:1px solid var(--line);font-size:.95rem;transition:padding-left .3s ease}
-  .cred-card li:hover{padding-left:6px}
-  .cred-card li:last-child{border-bottom:none}
-  .cred-card li strong{display:block;font-weight:500;color:var(--ink)}
-  .cred-card li span{color:var(--ink-soft);font-size:.85rem}
+  .glance:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(20,20,20,.08)}
+  .glance h3{font-size:1.5rem;margin-bottom:18px}
+  .glance ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px 32px}
+  .glance li{font-size:.95rem;border-left:2px solid var(--sage-soft);padding-left:14px;transition:border-color .3s}
+  .glance li:hover{border-color:var(--sage-deep)}
+  .glance li strong{display:block;font-weight:500;color:var(--ink)}
+  .glance li span{color:var(--ink-soft);font-size:.85rem}
   @media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:40px}}
 
-  /* SERVICES */
-  .services{background:var(--bg-alt)}
+  /* SERVICES — sage background behind the boxes */
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
   .svc{
     background:var(--white);border:1px solid var(--line);border-radius:4px;padding:34px 30px;
@@ -172,38 +197,72 @@
   }
   .svc::before{
     content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--sage);transform:scaleX(0);transform-origin:left;
+    background:var(--sage-deep);transform:scaleX(0);transform-origin:left;
     transition:transform .4s cubic-bezier(.22,.61,.36,1);
   }
-  .svc:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,20,20,.1);border-color:var(--sage-soft)}
+  .svc:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(20,20,20,.14)}
   .svc:hover::before{transform:scaleX(1)}
   .svc .num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--sage-deep);margin-bottom:14px;transition:transform .35s ease}
   .svc:hover .num{transform:translateX(4px)}
   .svc h3{font-size:1.45rem;margin-bottom:12px}
   .svc p{font-size:.94rem;color:var(--ink-soft)}
+  .svc.svc-img{padding:0;display:flex}
+  .svc.svc-img .ph{flex:1;border:none;border-radius:0;background:var(--sage-tint)}
+  .services-note{margin-top:26px;font-size:.9rem;color:var(--black-deep);max-width:60ch}
   @media(max-width:800px){.svc-grid{grid-template-columns:1fr}}
 
-  /* EXPERIENCE TIMELINE */
-  .timeline{max-width:760px;margin-top:10px;position:relative;padding-left:26px}
+  /* MEMBERSHIPS & QUALIFICATIONS (content to come) */
+  .memberships .ph{min-height:150px;max-width:760px}
+
+  /* TESTIMONIALS — sliding carousel */
+  .carousel{position:relative;max-width:820px;margin:0 auto;overflow:hidden}
+  .c-track{display:flex;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+  .c-slide{flex:0 0 100%;padding:10px 8px 0}
+  .c-card{
+    background:var(--white);border:1px solid var(--line);border-radius:4px;
+    padding:38px 40px;text-align:center;
+  }
+  .c-card blockquote{
+    font-family:'Cormorant Garamond',serif;font-size:1.45rem;line-height:1.45;
+    color:var(--ink);margin-bottom:16px;font-style:italic;
+  }
+  .c-card figcaption{font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sage-deep);font-weight:500}
+  .c-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:26px}
+  .c-btn{
+    background:transparent;border:1px solid var(--black-deep);color:var(--black-deep);
+    width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1rem;
+    transition:background .3s,color .3s;
+  }
+  .c-btn:hover{background:var(--black-deep);color:var(--white)}
+  .c-dots{display:flex;gap:8px}
+  .c-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--black-deep);background:transparent;cursor:pointer;padding:0;transition:background .3s,transform .3s}
+  .c-dot.active{background:var(--black-deep);transform:scale(1.25)}
+
+  /* EXPERIENCE / ROLES — sage background, images on the right */
+  .exp-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start}
+  .timeline{position:relative;padding-left:26px;margin-top:10px}
   .timeline::before{
     content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;
-    background:linear-gradient(to bottom,var(--sage) 0%,var(--line) 100%);
+    background:linear-gradient(to bottom,var(--black-deep) 0%,rgba(11,11,10,.15) 100%);
   }
   .tl-item{
-    display:grid;grid-template-columns:150px 1fr;gap:26px;padding:22px 0;
-    border-top:1px solid var(--line);position:relative;
-    transition:background .3s ease;
+    display:grid;grid-template-columns:130px 1fr;gap:22px;padding:22px 0;
+    border-top:1px solid rgba(11,11,10,.15);position:relative;
   }
   .tl-item::before{
     content:"";position:absolute;left:-25px;top:32px;width:9px;height:9px;
-    border-radius:50%;background:var(--bg);border:2px solid var(--sage);
+    border-radius:50%;background:var(--sage-band);border:2px solid var(--black-deep);
     transition:background .3s ease,transform .3s ease;
   }
-  .tl-item:hover::before{background:var(--sage);transform:scale(1.3)}
+  .tl-item:hover::before{background:var(--black-deep);transform:scale(1.3)}
   .tl-item:first-child{border-top:none}
-  .tl-date{font-size:.82rem;letter-spacing:.05em;color:var(--sage-deep);text-transform:uppercase;padding-top:4px}
+  .tl-date{font-size:.82rem;letter-spacing:.05em;color:var(--black-deep);text-transform:uppercase;padding-top:4px;font-weight:500}
   .tl-body h3{font-size:1.35rem;margin-bottom:4px}
   .tl-body .org{font-size:.9rem;color:var(--ink-soft);font-weight:500}
+  .tl-body p{font-size:.94rem;color:var(--ink-soft);margin-top:6px}
+  .exp-photos{display:flex;flex-direction:column;gap:22px;position:sticky;top:100px}
+  .exp-photos .ph{aspect-ratio:4/3}
+  @media(max-width:800px){.exp-grid{grid-template-columns:1fr}.exp-photos{position:static}}
   @media(max-width:600px){.tl-item{grid-template-columns:1fr;gap:6px}}
 
   /* CONTACT */
@@ -223,15 +282,19 @@
     display:inline-block;margin-top:10px;transition:color .3s,border-color .3s;
   }
   .contact a.mail:hover{color:var(--sage-soft);border-color:var(--sage-soft)}
+  .contact .phone{
+    margin-top:18px;font-size:1.05rem;color:#e8e8e4;letter-spacing:.04em;
+  }
+  .contact .phone .tbc{font-size:.78rem;color:var(--sage-soft);text-transform:uppercase;letter-spacing:.12em;margin-left:10px}
   .contact .meta{margin-top:30px;font-size:.9rem;color:#a6a69e;letter-spacing:.04em}
 
-  /* FOOTER */
+  /* FOOTER + banner placeholder */
+  .foot-banner{padding:0}
+  .foot-banner .ph{border-radius:0;min-height:140px;border-left:none;border-right:none}
   footer.site{background:var(--black-deep);color:#9c9c94;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)}
   .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.82rem}
   .foot-inner img{height:56px;opacity:.9;transition:opacity .3s}
   .foot-inner img:hover{opacity:1}
-
-  .note{background:#fff8e6;border:1px solid #e7d38f;border-radius:4px;padding:16px 20px;font-size:.85rem;color:#6b5613;max-width:1120px;margin:0 auto}
 </style>
 </head>
 <body>
@@ -253,7 +316,7 @@
 <section class="hero">
   <div class="wrap">
     <img class="logo" src="logo_dark.png" alt="Jo Guard Heritage — Heritage Consultant">
-    <span class="eyebrow">Heritage Consultancy · Victoria, Australia</span>
+    <span class="eyebrow">Victoria, Australia</span>
     <h1>Expert heritage advice for places that matter</h1>
     <div class="rule"></div>
     <p>Jo Guard Heritage helps owners, councils and communities understand, protect and make the most of Victoria's heritage places — combining decades of statutory and strategic experience with practical, plain-English advice.</p>
@@ -274,21 +337,25 @@
         <p>Jo brings a rare, inside understanding of how the heritage system actually works — from the detail of permits and consents through to strategic policy and the workings of statutory decision-making. She has served as Manager of Heritage Permits and Consents and as Heritage Operations Manager at Heritage Victoria, as a long-standing Heritage Adviser to Mitchell Shire Council, and as a member of the Heritage Council of Victoria.</p>
         <p>That breadth means clients get advice that is both technically rigorous and genuinely pragmatic — grounded in what decision-makers look for, and focused on getting good outcomes for significant places.</p>
       </div>
-      <aside class="cred-card reveal d2">
-        <h3 class="serif">At a glance</h3>
-        <ul>
-          <li><strong>Independent heritage consultant</strong><span>Jo Guard Heritage · est. 2023</span></li>
-          <li><strong>Based in Victoria</strong><span>Serving clients across the state</span></li>
-          <li><strong>Government heritage background</strong><span>Heritage Victoria · local & state government, UK & Australia</span></li>
-          <li><strong>Former Heritage Council member</strong><span>Heritage Council of Victoria, 2017–2023</span></li>
-          <li><strong>Statutory & strategic expertise</strong><span>Permits, consents, policy & advice</span></li>
-        </ul>
-      </aside>
+      <div class="figure about-photo ph reveal d2">
+        <strong>Photo — awaiting final image</strong>
+        Jo in the purple shirt, standing in front of the trees.<br>Jo to confirm which photo.
+      </div>
+    </div>
+    <div class="glance reveal">
+      <h3 class="serif">At a glance</h3>
+      <ul>
+        <li><strong>Independent heritage consultant</strong><span>Jo Guard Heritage · est. 2023</span></li>
+        <li><strong>Based in Victoria</strong><span>Serving clients across the state</span></li>
+        <li><strong>Government heritage background</strong><span>Heritage Victoria · local & state government, UK & Australia</span></li>
+        <li><strong>Former Heritage Council member</strong><span>Heritage Council of Victoria, 2017–2023</span></li>
+        <li><strong>Statutory & strategic expertise</strong><span>Permits, consents, policy & advice</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<section id="services" class="services">
+<section id="services" class="sage-band">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Services</span>
@@ -302,79 +369,137 @@
       </div>
       <div class="svc reveal d1">
         <div class="num">02</div>
-        <h3 class="serif">Permits &amp; planning support</h3>
-        <p>Support with heritage permit and planning permit applications, including advice on what decision-makers require and how to present a proposal for the best chance of a positive outcome.</p>
+        <h3 class="serif">Permits, planning &amp; heritage impact</h3>
+        <p>Support with heritage permit and planning permit applications — including robust statements of heritage impact that assess how proposed works affect a place's significance, prepared to the standard expected by councils and Heritage Victoria.</p>
       </div>
       <div class="svc reveal d2">
         <div class="num">03</div>
-        <h3 class="serif">Statements of heritage impact</h3>
-        <p>Robust heritage impact statements that assess how proposed works affect a place's significance, prepared to the standard expected by councils and Heritage Victoria.</p>
-      </div>
-      <div class="svc reveal">
-        <div class="num">04</div>
         <h3 class="serif">Significance assessments</h3>
         <p>Assessment of cultural heritage significance and preparation of statements of significance — the foundation for sound heritage decisions, listings and management.</p>
       </div>
-      <div class="svc reveal d1">
-        <div class="num">05</div>
+      <div class="svc reveal">
+        <div class="num">04</div>
         <h3 class="serif">Local government heritage</h3>
         <p>Trusted heritage adviser support for councils, drawing on years of hands-on experience advising a Victorian shire on planning referrals, policy and day-to-day heritage matters.</p>
       </div>
-      <div class="svc reveal d2">
-        <div class="num">06</div>
+      <div class="svc reveal d1">
+        <div class="num">05</div>
         <h3 class="serif">Expert &amp; strategic review</h3>
         <p>Independent review, second opinions and strategic input on heritage listings, policy and studies — informed by experience on both sides of the statutory process.</p>
       </div>
+      <div class="svc svc-img figure reveal d2">
+        <div class="ph">
+          <strong>Image — awaiting JPEG</strong>
+          Helping hands on the flint wall.
+        </div>
+        <div class="cap">Hover caption will show where the photo was taken — Jo to confirm wording.</div>
+      </div>
     </div>
-    <p class="reveal" style="margin-top:26px;font-size:.9rem;color:var(--ink-soft);max-width:60ch;">Not sure which you need? A short initial conversation is the best place to start — get in touch and Jo will point you in the right direction.</p>
+    <p class="services-note reveal">Not sure which you need? A short initial conversation is the best place to start — get in touch and Jo will point you in the right direction.</p>
   </div>
 </section>
 
-<section id="experience">
+<section id="memberships" class="memberships">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Professional Memberships &amp; Qualifications</span>
+      <h2 class="serif">Credentials you can rely on</h2>
+    </div>
+    <div class="ph reveal">
+      <strong>Wording to come from Jo</strong>
+      This section is built and ready — Jo's memberships and qualifications will drop straight in here once the wording arrives.
+    </div>
+  </div>
+</section>
+
+<section id="testimonials" class="sage-band">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center;max-width:none;">
+      <span class="eyebrow">Testimonials</span>
+      <h2 class="serif">What clients say</h2>
+    </div>
+    <div class="carousel reveal" id="tst" aria-roledescription="carousel" aria-label="Client testimonials">
+      <div class="c-track">
+        <figure class="c-slide">
+          <div class="c-card">
+            <blockquote>"Placeholder testimonial — Jo's real client quotes will go here. This slider is working and ready for the final wording."</blockquote>
+            <figcaption>Client name · Project, Victoria</figcaption>
+          </div>
+        </figure>
+        <figure class="c-slide">
+          <div class="c-card">
+            <blockquote>"Second placeholder quote — the carousel slides automatically and can also be moved with the arrows or dots below."</blockquote>
+            <figcaption>Client name · Project, Victoria</figcaption>
+          </div>
+        </figure>
+        <figure class="c-slide">
+          <div class="c-card">
+            <blockquote>"Third placeholder quote — as many testimonials as Jo likes can be added, one card each."</blockquote>
+            <figcaption>Client name · Project, Victoria</figcaption>
+          </div>
+        </figure>
+      </div>
+      <div class="c-nav">
+        <button class="c-btn" id="c-prev" aria-label="Previous testimonial">&#8592;</button>
+        <div class="c-dots" id="c-dots"></div>
+        <button class="c-btn" id="c-next" aria-label="Next testimonial">&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="sage-band" style="border-top:1px solid rgba(11,11,10,.12);">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Experience</span>
       <h2 class="serif">A career built inside the heritage system</h2>
     </div>
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-date">2023 — Present</div>
-        <div class="tl-body">
-          <h3 class="serif">Heritage Consultant &amp; Founder</h3>
-          <div class="org">Jo Guard Heritage</div>
-          <p style="font-size:.94rem;color:var(--ink-soft);margin-top:6px;">Independent heritage consultancy providing advice to owners, councils and communities across Victoria.</p>
+    <div class="exp-grid">
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-date">2023 — Present</div>
+          <div class="tl-body">
+            <h3 class="serif">Heritage Consultant &amp; Founder</h3>
+            <div class="org">Jo Guard Heritage</div>
+            <p>Independent heritage consultancy providing advice to owners, councils and communities across Victoria.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal d1">
+          <div class="tl-date">2017 — 2026</div>
+          <div class="tl-body">
+            <h3 class="serif">Heritage Adviser</h3>
+            <div class="org">Mitchell Shire Council</div>
+            <p>Nearly nine years advising a Victorian council on heritage matters, planning referrals and policy.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal d2">
+          <div class="tl-date">2017 — 2023</div>
+          <div class="tl-body">
+            <h3 class="serif">Member</h3>
+            <div class="org">Heritage Council of Victoria</div>
+            <p>Contributing to Victoria's peak heritage body and its statutory decision-making.</p>
+          </div>
+        </div>
+        <div class="tl-item reveal d3">
+          <div class="tl-date">2012 — 2013</div>
+          <div class="tl-body">
+            <h3 class="serif">Heritage Operations Manager</h3>
+            <div class="org">Heritage Victoria · Dept of Planning &amp; Community Development</div>
+          </div>
+        </div>
+        <div class="tl-item reveal d4">
+          <div class="tl-date">Earlier</div>
+          <div class="tl-body">
+            <h3 class="serif">Manager, Heritage Permits &amp; Consents</h3>
+            <div class="org">Heritage Victoria · Victorian State Government</div>
+            <p>Following earlier heritage roles in local and state government in the United Kingdom.</p>
+          </div>
         </div>
       </div>
-      <div class="tl-item reveal d1">
-        <div class="tl-date">2017 — 2026</div>
-        <div class="tl-body">
-          <h3 class="serif">Heritage Adviser</h3>
-          <div class="org">Mitchell Shire Council</div>
-          <p style="font-size:.94rem;color:var(--ink-soft);margin-top:6px;">Nearly nine years advising a Victorian council on heritage matters, planning referrals and policy.</p>
-        </div>
-      </div>
-      <div class="tl-item reveal d2">
-        <div class="tl-date">2017 — 2023</div>
-        <div class="tl-body">
-          <h3 class="serif">Member</h3>
-          <div class="org">Heritage Council of Victoria</div>
-          <p style="font-size:.94rem;color:var(--ink-soft);margin-top:6px;">Contributing to Victoria's peak heritage body and its statutory decision-making.</p>
-        </div>
-      </div>
-      <div class="tl-item reveal d3">
-        <div class="tl-date">2012 — 2013</div>
-        <div class="tl-body">
-          <h3 class="serif">Heritage Operations Manager</h3>
-          <div class="org">Heritage Victoria · Dept of Planning &amp; Community Development</div>
-        </div>
-      </div>
-      <div class="tl-item reveal d4">
-        <div class="tl-date">Earlier</div>
-        <div class="tl-body">
-          <h3 class="serif">Manager, Heritage Permits &amp; Consents</h3>
-          <div class="org">Heritage Victoria · Victorian State Government</div>
-          <p style="font-size:.94rem;color:var(--ink-soft);margin-top:6px;">Following earlier heritage roles in local and state government in the United Kingdom.</p>
-        </div>
+      <div class="exp-photos">
+        <div class="figure ph reveal"><strong>Image 1 — awaiting JPEG</strong>Little Builder's Cottage<div class="cap">Little Builder's Cottage</div></div>
+        <div class="figure ph reveal d1"><strong>Image 2 — awaiting JPEG</strong>State Library<div class="cap">State Library of Victoria</div></div>
+        <div class="figure ph reveal d2"><strong>Image 3 — awaiting JPEG</strong>The pub<div class="cap">Pub name — Jo to confirm</div></div>
       </div>
     </div>
   </div>
@@ -384,13 +509,21 @@
   <div class="wrap">
     <span class="eyebrow reveal">Contact</span>
     <h2 class="serif reveal d1">Let's talk about your place</h2>
-    <p class="reveal d2">Whether you're planning works to a heritage property, need a heritage impact statement, or want strategic heritage advice, Jo would be glad to hear from you.</p>
+    <p class="reveal d2">Whether you're planning works to a heritage property, need a heritage impact statement, or want strategic heritage advice, Jo would be glad to hear from you — by email or text.</p>
     <div class="reveal d3" style="margin-top:8px;">
       <a class="mail" href="mailto:joguardheritage@gmail.com">joguardheritage@gmail.com</a>
     </div>
-    <div class="meta reveal d4">Jo Guard Heritage · Victoria, Australia</div>
+    <div class="phone reveal d4">Call or text: 0XXX XXX XXX <span class="tbc">Number to be confirmed</span></div>
+    <div class="meta reveal d5">Jo Guard Heritage · Victoria, Australia</div>
   </div>
 </section>
+
+<div class="foot-banner">
+  <div class="ph">
+    <strong>Footer banner — awaiting JPEG</strong>
+    Brick background with the cottage window photo.
+  </div>
+</div>
 
 <footer class="site">
   <div class="wrap foot-inner">
@@ -418,6 +551,44 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     });
   },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
   els.forEach(function(el){ io.observe(el); });
+})();
+
+// Testimonial carousel: arrows, dots, auto-advance (paused on hover, off for reduced motion)
+(function(){
+  var root = document.getElementById('tst');
+  if(!root) return;
+  var track = root.querySelector('.c-track');
+  var slides = root.querySelectorAll('.c-slide');
+  var dotsBox = document.getElementById('c-dots');
+  var idx = 0, timer = null;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  slides.forEach(function(_, i){
+    var d = document.createElement('button');
+    d.className = 'c-dot';
+    d.setAttribute('aria-label','Go to testimonial ' + (i+1));
+    d.addEventListener('click', function(){ go(i); restart(); });
+    dotsBox.appendChild(d);
+  });
+  var dots = dotsBox.querySelectorAll('.c-dot');
+
+  function go(i){
+    idx = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+    dots.forEach(function(d, j){ d.classList.toggle('active', j === idx); });
+  }
+  function restart(){
+    if(reduced) return;
+    clearInterval(timer);
+    timer = setInterval(function(){ go(idx + 1); }, 6000);
+  }
+  document.getElementById('c-prev').addEventListener('click', function(){ go(idx - 1); restart(); });
+  document.getElementById('c-next').addEventListener('click', function(){ go(idx + 1); restart(); });
+  root.addEventListener('mouseenter', function(){ clearInterval(timer); });
+  root.addEventListener('mouseleave', restart);
+
+  go(0);
+  restart();
 })();
 </script>
 </body>
