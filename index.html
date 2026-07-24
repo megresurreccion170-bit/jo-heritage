@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fdfdfb;            /* ecru base — Jo wants to keep this */
+    --bg:#ffffff;            /* white base — palette is black, white & sage */
     --ink:#141414;
     --ink-soft:#4a4a46;
     --black:#141414;
@@ -60,6 +60,8 @@
     transform:translateY(100%);transition:transform .35s cubic-bezier(.22,.61,.36,1);
   }
   .figure:hover .cap,.figure:focus-within .cap{transform:none}
+  .figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+  .figure:hover img{transform:scale(1.04)}
 
   /* ENTRANCE + SCROLL-REVEAL ANIMATIONS */
   @keyframes fadeUp{
@@ -94,7 +96,7 @@
   /* NAV — brand in Cinzel (matches the carved-serif logo face), HERITAGE reads larger */
   header.nav{
     position:sticky;top:0;z-index:50;
-    background:rgba(253,253,251,.9);
+    background:rgba(255,255,255,.9);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
     animation:fadeIn .6s ease both;
@@ -286,15 +288,54 @@
     margin-top:18px;font-size:1.05rem;color:#e8e8e4;letter-spacing:.04em;
   }
   .contact .phone .tbc{font-size:.78rem;color:var(--sage-soft);text-transform:uppercase;letter-spacing:.12em;margin-left:10px}
+  .contact .socials{margin-top:26px;display:flex;gap:20px;flex-wrap:wrap}
+  .contact .socials a{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:50%;color:#e8e8e4;
+    border:1px solid rgba(255,255,255,.22);
+    transition:color .3s,border-color .3s,background .3s,transform .3s;
+  }
+  .contact .socials a:hover{color:var(--black-deep);background:var(--sage-soft);border-color:var(--sage-soft);transform:translateY(-2px)}
   .contact .meta{margin-top:30px;font-size:.9rem;color:#a6a69e;letter-spacing:.04em}
 
   /* FOOTER + banner placeholder */
-  .foot-banner{padding:0}
-  .foot-banner .ph{border-radius:0;min-height:140px;border-left:none;border-right:none}
+  .foot-banner{
+    padding:56px 0;position:relative;
+    background:#2a211c url('images/brick-wall.png') center/cover;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .foot-banner::before{content:"";position:absolute;inset:0;background:rgba(11,11,10,.32)}
+  .foot-banner-window{
+    position:relative;width:200px;aspect-ratio:3/4;padding:10px;
+    background:var(--white);border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 22px 55px rgba(0,0,0,.45);
+    transition:transform .5s cubic-bezier(.22,.61,.36,1);
+  }
+  .foot-banner-window:hover{transform:translateY(-4px)}
+  .foot-banner-window img{display:block;width:100%;height:100%;object-fit:cover}
   footer.site{background:var(--black-deep);color:#9c9c94;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)}
   .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.82rem}
   .foot-inner img{height:56px;opacity:.9;transition:opacity .3s}
   .foot-inner img:hover{opacity:1}
+  .foot-social{display:flex;gap:18px;align-items:center}
+  .foot-social a{
+    display:inline-flex;align-items:center;justify-content:center;
+    color:#9c9c94;transition:color .3s,transform .3s;
+  }
+  .foot-social a:hover{color:var(--sage-soft);transform:translateY(-2px)}
+  .acknowledgement{
+    background:var(--black-deep);color:#b7b7ae;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .acknowledgement .wrap{padding-top:34px;padding-bottom:34px}
+  .acknowledgement p{
+    max-width:70ch;font-size:.9rem;line-height:1.75;font-style:italic;
+    color:#c2c2ba;
+  }
+  .acknowledgement .aoc-label{
+    display:block;font-style:normal;font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--sage-soft);margin-bottom:12px;
+  }
 </style>
 </head>
 <body>
@@ -337,9 +378,9 @@
         <p>Jo brings a rare, inside understanding of how the heritage system actually works — from the detail of permits and consents through to strategic policy and the workings of statutory decision-making. She has served as Manager of Heritage Permits and Consents and as Heritage Operations Manager at Heritage Victoria, as a long-standing Heritage Adviser to Mitchell Shire Council, and as a member of the Heritage Council of Victoria.</p>
         <p>That breadth means clients get advice that is both technically rigorous and genuinely pragmatic — grounded in what decision-makers look for, and focused on getting good outcomes for significant places.</p>
       </div>
-      <div class="figure about-photo ph reveal d2">
-        <strong>Photo — awaiting final image</strong>
-        Jo in the purple shirt, standing in front of the trees.<br>Jo to confirm which photo.
+      <div class="figure about-photo reveal d2" title="Jo Guard">
+        <img src="images/jo-portrait.png" alt="Jo Guard, heritage consultant">
+        <div class="cap">Jo Guard</div>
       </div>
     </div>
     <div class="glance reveal">
@@ -387,12 +428,9 @@
         <h3 class="serif">Expert &amp; strategic review</h3>
         <p>Independent review, second opinions and strategic input on heritage listings, policy and studies — informed by experience on both sides of the statutory process.</p>
       </div>
-      <div class="svc svc-img figure reveal d2">
-        <div class="ph">
-          <strong>Image — awaiting JPEG</strong>
-          Helping hands on the flint wall.
-        </div>
-        <div class="cap">Hover caption will show where the photo was taken — Jo to confirm wording.</div>
+      <div class="svc svc-img figure reveal d2" title="Southwark Cathedral, London">
+        <img src="images/southwark-flint-wall.jpg" alt="Hands resting on the flint wall of Southwark Cathedral, London">
+        <div class="cap">Southwark Cathedral, London</div>
       </div>
     </div>
     <p class="services-note reveal">Not sure which you need? A short initial conversation is the best place to start — get in touch and Jo will point you in the right direction.</p>
@@ -497,9 +535,9 @@
         </div>
       </div>
       <div class="exp-photos">
-        <div class="figure ph reveal"><strong>Image 1 — awaiting JPEG</strong>Little Builder's Cottage<div class="cap">Little Builder's Cottage</div></div>
-        <div class="figure ph reveal d1"><strong>Image 2 — awaiting JPEG</strong>State Library<div class="cap">State Library of Victoria</div></div>
-        <div class="figure ph reveal d2"><strong>Image 3 — awaiting JPEG</strong>The pub<div class="cap">Pub name — Jo to confirm</div></div>
+        <div class="figure reveal" title="Whitburgh Cottage"><img src="images/whitburgh-cottage.jpg" alt="Whitburgh Cottage, bluestone heritage cottage"><div class="cap">Whitburgh Cottage</div></div>
+        <div class="figure reveal d1" title="State Library of Victoria"><img src="images/state-library.jpg" alt="La Trobe Reading Room, State Library of Victoria"><div class="cap">State Library of Victoria</div></div>
+        <div class="figure reveal d2" title="Tallarook Hotel"><img src="images/tallarook-hotel.jpg" alt="Tallarook Hotel"><div class="cap">Tallarook Hotel</div></div>
       </div>
     </div>
   </div>
@@ -511,24 +549,54 @@
     <h2 class="serif reveal d1">Let's talk about your place</h2>
     <p class="reveal d2">Whether you're planning works to a heritage property, need a heritage impact statement, or want strategic heritage advice, Jo would be glad to hear from you — by email or text.</p>
     <div class="reveal d3" style="margin-top:8px;">
-      <a class="mail" href="mailto:joguardheritage@gmail.com">joguardheritage@gmail.com</a>
+      <a class="mail" href="mailto:hello@joguardheritage.com.au">hello@joguardheritage.com.au</a>
     </div>
     <div class="phone reveal d4">Call or text: 0XXX XXX XXX <span class="tbc">Number to be confirmed</span></div>
+    <div class="socials reveal d5">
+      <a href="https://www.instagram.com/joguardheritage" target="_blank" rel="noopener" aria-label="Instagram — @joguardheritage" title="Instagram">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/jo-guard-75031b28" target="_blank" rel="noopener" aria-label="LinkedIn — Jo Guard" title="LinkedIn">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-4.9c0-1.17-.02-2.67-1.9-2.67-1.9 0-2.2 1.28-2.2 2.6V21H9z"/></svg>
+      </a>
+      <a href="https://joguardheritage.com.au" target="_blank" rel="noopener" aria-label="Website — joguardheritage.com.au" title="joguardheritage.com.au">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.7 2.6 4.2 6 4.2 9.5s-1.5 6.9-4.2 9.5c-2.7-2.6-4.2-6-4.2-9.5S9.3 5.1 12 2.5z"/></svg>
+      </a>
+    </div>
     <div class="meta reveal d5">Jo Guard Heritage · Victoria, Australia</div>
   </div>
 </section>
 
-<div class="foot-banner">
-  <div class="ph">
-    <strong>Footer banner — awaiting JPEG</strong>
-    Brick background with the cottage window photo.
+<div class="foot-banner" title="Whitburgh Cottage window">
+  <div class="foot-banner-window">
+    <img src="images/cottage-window.jpg" alt="View through the window of Whitburgh Cottage">
   </div>
 </div>
+
+<section class="acknowledgement">
+  <div class="wrap reveal">
+    <p>
+      <span class="aoc-label">Acknowledgement of Country</span>
+      I acknowledge the Taungurung People as the Traditional Owners and Custodians of the land and waters on which I live and work. I pay my respects to their Elders past and present, and extend that respect to all First Nations peoples. Sovereignty was never ceded.
+    </p>
+  </div>
+</section>
 
 <footer class="site">
   <div class="wrap foot-inner">
     <img src="logo_light.png" alt="Jo Guard Heritage">
-    <div>© <span id="yr"></span> Jo Guard Heritage. All rights reserved.</div>
+    <div class="foot-social">
+      <a href="https://www.instagram.com/joguardheritage" target="_blank" rel="noopener" aria-label="Instagram — @joguardheritage" title="Instagram">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/jo-guard-75031b28" target="_blank" rel="noopener" aria-label="LinkedIn — Jo Guard" title="LinkedIn">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-4.9c0-1.17-.02-2.67-1.9-2.67-1.9 0-2.2 1.28-2.2 2.6V21H9z"/></svg>
+      </a>
+      <a href="mailto:hello@joguardheritage.com.au" aria-label="Email — hello@joguardheritage.com.au" title="Email">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6l9 6.5L21 6"/></svg>
+      </a>
+    </div>
+    <div>© <span id="yr"></span> Jo Guard Heritage · joguardheritage.com.au</div>
   </div>
 </footer>
 
