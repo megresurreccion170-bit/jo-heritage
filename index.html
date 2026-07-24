@@ -347,6 +347,43 @@
     display:block;font-style:normal;font-size:.7rem;letter-spacing:.22em;
     text-transform:uppercase;color:var(--sage-soft);margin-bottom:12px;
   }
+
+  /* ===== Content & colour update ===== */
+  /* Hero — soft sage wash so the front page carries colour */
+  .hero{background:linear-gradient(180deg,var(--sage-tint) 0%,#f6f9f1 100%)}
+
+  /* Intro / welcome band (Jo's personal voice) */
+  .intro{background:var(--sage-tint);border-bottom:1px solid var(--line)}
+  .intro .eyebrow{display:block;text-align:center;margin-bottom:16px}
+  .intro-lead{
+    font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-style:italic;
+    font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.32;color:var(--black-deep);
+    max-width:26ch;margin:0 auto 30px;text-align:center;
+  }
+  .intro-body{max-width:66ch;margin:0 auto}
+  .intro-body p{margin-bottom:16px;color:var(--ink-soft)}
+  .intro-points{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+  .ipoint{
+    background:var(--white);border:1px solid var(--line);border-top:3px solid var(--sage);
+    border-radius:4px;padding:26px 24px;transition:transform .35s ease,box-shadow .35s ease;
+  }
+  .ipoint:hover{transform:translateY(-4px);box-shadow:0 16px 38px rgba(20,20,20,.08)}
+  .ipoint h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--black-deep);margin-bottom:8px}
+  .ipoint p{font-size:.92rem;color:var(--ink-soft)}
+  @media(max-width:800px){.intro-points{grid-template-columns:1fr}}
+
+  /* Bolder service-box headings + optional in-box list */
+  .svc h3{font-weight:600}
+  .svc-list{list-style:none;margin-top:12px}
+  .svc-list li{position:relative;padding-left:18px;margin-bottom:8px;font-size:.9rem;color:var(--ink-soft)}
+  .svc-list li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--sage-deep)}
+
+  /* Memberships & qualifications */
+  .creds{display:grid;grid-template-columns:1fr 1fr;gap:44px;max-width:840px}
+  .creds h3{font-size:1.4rem;font-weight:600;color:var(--black-deep);margin-bottom:14px}
+  .creds ul{list-style:none}
+  .creds li{border-left:2px solid var(--sage-soft);padding:2px 0 2px 14px;margin-bottom:12px;color:var(--ink-soft);font-size:.98rem}
+  @media(max-width:700px){.creds{grid-template-columns:1fr;gap:28px}}
 </style>
 </head>
 <body>
@@ -368,13 +405,39 @@
 <section class="hero">
   <div class="wrap">
     <img class="logo" src="logo_dark.png" alt="Jo Guard Heritage — Heritage Consultant">
-    <span class="eyebrow">Victoria, Australia</span>
+    <span class="eyebrow">Heritage Consultancy · Victoria, Australia</span>
     <h1>Expert heritage advice for places that matter</h1>
     <div class="rule"></div>
-    <p>Jo Guard Heritage helps owners, councils and communities understand, protect and make the most of Victoria's heritage places — combining decades of statutory and strategic experience with practical, plain-English advice.</p>
+    <p>Jo Guard Heritage helps owners, decision-makers and communities understand, protect and make sensitive changes to Victoria's heritage places — combining decades of experience with practical, plain-English advice.</p>
     <div class="cta-row">
       <a class="btn" href="#contact">Start a conversation</a>
       <a class="btn ghost" href="#services">Explore services</a>
+    </div>
+  </div>
+</section>
+
+<section id="intro" class="intro">
+  <div class="wrap">
+    <span class="eyebrow reveal">Welcome</span>
+    <p class="intro-lead reveal">"Heritage places aren't frozen in time — they can usually sustain change, and that's what I can help with."</p>
+    <div class="intro-body reveal d1">
+      <p>Bringing historic buildings back to life, or making the most of them through sensitive change, is an exciting journey — but finding your way through complex heritage planning laws can feel overwhelming. Whether you're altering or repairing a treasured landmark, or designing a modern development next to a heritage place, every choice affects the history around it.</p>
+      <p>That's where a heritage consultant comes in. As a specialist in historic architecture and planning legislation, I can help unlock your site's potential — understanding a building's past, context and true significance to build a robust, persuasive case for the changes you want to make.</p>
+      <p>For over 30 years I've worked to preserve and enhance some of Victoria's most important historic places, while helping them continue to meet the needs of modern owners. I can slot into your existing design team or work as a standalone service — together, we can turn your vision from an idea into an enduring reality.</p>
+    </div>
+    <div class="intro-points">
+      <div class="ipoint reveal">
+        <h3 class="serif">Navigating planning</h3>
+        <p>Simplifying complex rules for historic places.</p>
+      </div>
+      <div class="ipoint reveal d1">
+        <h3 class="serif">Solving design puzzles</h3>
+        <p>Achievable solutions for challenging contexts.</p>
+      </div>
+      <div class="ipoint reveal d2">
+        <h3 class="serif">Protecting the future</h3>
+        <p>Sustainable results and long-term maintenance plans.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -384,10 +447,10 @@
     <div class="about-grid">
       <div class="reveal">
         <span class="eyebrow">About Jo</span>
-        <h2 class="serif" style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 26px;">Decades in heritage, now on your side</h2>
-        <p>Jo Guard is a heritage consultant based in Victoria with a career spanning local and state government heritage practice across both the United Kingdom and Australia. After many years shaping heritage policy and decisions from within government, she founded Jo Guard Heritage in 2023 to provide independent, client-focused advice.</p>
-        <p>Jo brings a rare, inside understanding of how the heritage system actually works — from the detail of permits and consents through to strategic policy and the workings of statutory decision-making. She has served as Manager of Heritage Permits and Consents and as Heritage Operations Manager at Heritage Victoria, as a long-standing Heritage Adviser to Mitchell Shire Council, and as a member of the Heritage Council of Victoria.</p>
-        <p>That breadth means clients get advice that is both technically rigorous and genuinely pragmatic — grounded in what decision-makers look for, and focused on getting good outcomes for significant places.</p>
+        <h2 class="serif" style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 26px;">Decades of knowledge and experience, working for you</h2>
+        <p>Jo Guard is a heritage consultant based in Victoria, with a career spanning local and state government heritage practice in Australia and the United Kingdom. After many years managing heritage development, policy and decisions from within government, she founded Jo Guard Heritage in 2023 to provide independent, client-focused advice.</p>
+        <p>Jo brings a rare, inside understanding of how the heritage system actually works — from the detail of permits and repairs through to strategic policy and the workings of statutory decision-making. She has worked across all areas of Heritage Victoria, culminating as Heritage Operations Manager, been the long-standing Heritage Adviser to Mitchell Shire Council, and served two terms as a member of the Heritage Council of Victoria.</p>
+        <p>That background means clients get advice that is both technically rigorous and genuinely pragmatic — grounded in what decision-makers look for, and focused on getting good outcomes for significant places.</p>
       </div>
       <div class="about-media reveal d2">
         <div class="figure about-photo" title="Jo Guard">
@@ -405,9 +468,8 @@
       <ul>
         <li><strong>Independent heritage consultant</strong><span>Jo Guard Heritage · est. 2023</span></li>
         <li><strong>Based in Victoria</strong><span>Serving clients across the state</span></li>
-        <li><strong>Government heritage background</strong><span>Heritage Victoria · local & state government, UK & Australia</span></li>
-        <li><strong>Former Heritage Council member</strong><span>Heritage Council of Victoria, 2017–2023</span></li>
-        <li><strong>Statutory & strategic expertise</strong><span>Permits, consents, policy & advice</span></li>
+        <li><strong>Government heritage background</strong><span>Heritage Victoria · Local Government Heritage Adviser, Victoria & England</span></li>
+        <li><strong>Heritage Council member</strong><span>Heritage Council of Victoria, 2017–2023</span></li>
       </ul>
     </div>
   </div>
@@ -427,13 +489,17 @@
     <div class="svc-grid">
       <div class="svc reveal">
         <div class="num">01</div>
-        <h3 class="serif">Heritage advice &amp; strategy</h3>
-        <p>Clear, practical guidance for owners, developers and councils navigating heritage controls — from early feasibility conversations to considered strategy for complex or contested sites.</p>
+        <h3 class="serif">Heritage advice</h3>
+        <p>Clear, practical guidance to help you navigate heritage controls — from early feasibility conversations to detailed development proposals for complex or contested sites, and everything in between.</p>
       </div>
       <div class="svc reveal d1">
         <div class="num">02</div>
-        <h3 class="serif">Permits, planning &amp; heritage impact</h3>
-        <p>Support with heritage permit and planning permit applications — including robust statements of heritage impact that assess how proposed works affect a place's significance, prepared to the standard expected by councils and Heritage Victoria.</p>
+        <h3 class="serif">Permits &amp; planning support</h3>
+        <p>Support with heritage permit and planning permit applications — advice on what decision-makers require and how to present a proposal for the best chance of a positive outcome.</p>
+        <ul class="svc-list">
+          <li>Robust heritage impact statements, prepared to the standard councils and Heritage Victoria expect</li>
+          <li>Guidance on fulfilling permit conditions, or dealing with enforcement matters</li>
+        </ul>
       </div>
       <div class="svc reveal d2">
         <div class="num">03</div>
@@ -443,12 +509,12 @@
       <div class="svc reveal">
         <div class="num">04</div>
         <h3 class="serif">Local government heritage</h3>
-        <p>Trusted heritage adviser support for councils, drawing on years of hands-on experience advising a Victorian shire on planning referrals, policy and day-to-day heritage matters.</p>
+        <p>Trusted heritage adviser support for councils, drawing on years of hands-on experience with planning referrals, policy, grants and day-to-day heritage matters.</p>
       </div>
       <div class="svc reveal d1">
         <div class="num">05</div>
         <h3 class="serif">Expert &amp; strategic review</h3>
-        <p>Independent review, second opinions and strategic input on heritage listings, policy and studies — informed by experience on both sides of the statutory process.</p>
+        <p>Independent review, peer review and strategic input on heritage listings, policy and studies — informed by experience on both sides of the statutory process.</p>
       </div>
       <div class="svc svc-img figure reveal d2" title="Southwark Cathedral, London">
         <img src="images/southwark-flint-wall.jpg" alt="Hands resting on the flint wall of Southwark Cathedral, London">
@@ -463,11 +529,22 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Professional Memberships &amp; Qualifications</span>
-      <h2 class="serif">Credentials you can rely on</h2>
     </div>
-    <div class="ph reveal">
-      <strong>Wording to come from Jo</strong>
-      This section is built and ready — Jo's memberships and qualifications will drop straight in here once the wording arrives.
+    <div class="creds reveal">
+      <div class="cred-col">
+        <h3 class="serif">Memberships</h3>
+        <ul>
+          <li>Member of ICOMOS</li>
+          <li>Member of the Professional Historians Association (Vic &amp; Tas)</li>
+        </ul>
+      </div>
+      <div class="cred-col">
+        <h3 class="serif">Qualifications</h3>
+        <ul>
+          <li>MSc (Hons) Historic Conservation</li>
+          <li>BSc (Hons) Heritage Conservation — Ancient Monuments &amp; Historic Buildings</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -482,20 +559,20 @@
       <div class="c-track">
         <figure class="c-slide">
           <div class="c-card">
-            <blockquote>"Placeholder testimonial — Jo's real client quotes will go here. This slider is working and ready for the final wording."</blockquote>
-            <figcaption>Client name · Project, Victoria</figcaption>
+            <blockquote>"Working with Jo over the past two years has made the heritage planning process much easier. Her fees are fair and reasonable, her turnaround times are consistently quick, and she is always easy to work with. She took the stress out of the process by providing clear advice, practical guidance and prompt responses whenever I had questions. I would highly recommend Jo to anyone looking for knowledgeable, reliable and responsive heritage planning assistance."</blockquote>
+            <figcaption>Ray Abela · AAR Design and Drafting</figcaption>
           </div>
         </figure>
         <figure class="c-slide">
           <div class="c-card">
-            <blockquote>"Second placeholder quote — the carousel slides automatically and can also be moved with the arrows or dots below."</blockquote>
-            <figcaption>Client name · Project, Victoria</figcaption>
+            <blockquote>"Jo had an important role as a peer reviewer for documentation to support a complex heritage amendment at the City of Whittlesea. We valued the level of professionalism and enthusiasm Jo brought to the job, her interactions with staff, and her commitment to deliver the final products on time and on budget."</blockquote>
+            <figcaption>Colleen Lazenby · City of Whittlesea</figcaption>
           </div>
         </figure>
         <figure class="c-slide">
           <div class="c-card">
-            <blockquote>"Third placeholder quote — as many testimonials as Jo likes can be added, one card each."</blockquote>
-            <figcaption>Client name · Project, Victoria</figcaption>
+            <blockquote>"When we asked for a meeting with Council's Heritage Adviser, we expected a faceless bureaucrat with little local knowledge. Instead we got Jo, who provided clear, knowledgeable and empathetic advice in plain English, which gave us the direction we needed."</blockquote>
+            <figcaption>SB · Homeowner, Pyalong</figcaption>
           </div>
         </figure>
       </div>
@@ -522,7 +599,7 @@
           <div class="tl-body">
             <h3 class="serif">Heritage Consultant &amp; Founder</h3>
             <div class="org">Jo Guard Heritage</div>
-            <p>Independent heritage consultancy providing advice to owners, councils and communities across Victoria.</p>
+            <p>Independent heritage consultancy providing advice to owners, councils and other decision-makers, and communities across Victoria.</p>
           </div>
         </div>
         <div class="tl-item reveal d1">
@@ -538,22 +615,22 @@
           <div class="tl-body">
             <h3 class="serif">Member</h3>
             <div class="org">Heritage Council of Victoria</div>
-            <p>Contributing to Victoria's peak heritage body and its statutory decision-making.</p>
+            <p>Sat on Permit and Assessment Appeal Hearing panels, and the Communications, Finance, and Heritage Policy &amp; Practice Committees. Passionate about sustainability, Jo was part of the steering group that delivered the Heritage Council's guidance on Heritage and Climate Change — the first of its kind in Australia.</p>
           </div>
         </div>
         <div class="tl-item reveal d3">
-          <div class="tl-date">2012 — 2013</div>
+          <div class="tl-date">2001 — 2014</div>
           <div class="tl-body">
-            <h3 class="serif">Heritage Operations Manager</h3>
-            <div class="org">Heritage Victoria · Dept of Planning &amp; Community Development</div>
+            <h3 class="serif">Roles across Heritage Victoria</h3>
+            <div class="org">Victorian State Government</div>
+            <p>Beginning with what was meant to be a one-year exchange as a permits officer, Jo worked across the organisation, ending her time there as Heritage Operations Manager.</p>
           </div>
         </div>
         <div class="tl-item reveal d4">
-          <div class="tl-date">Earlier</div>
+          <div class="tl-date">1993 — 2001</div>
           <div class="tl-body">
-            <h3 class="serif">Manager, Heritage Permits &amp; Consents</h3>
-            <div class="org">Heritage Victoria · Victorian State Government</div>
-            <p>Following earlier heritage roles in local and state government in the United Kingdom.</p>
+            <h3 class="serif">Local Government Heritage Officer</h3>
+            <div class="org">North Dorset, Mendip (Somerset) &amp; Southampton (Hampshire), England</div>
           </div>
         </div>
         </div>
@@ -571,11 +648,10 @@
   <div class="wrap">
     <span class="eyebrow reveal">Contact</span>
     <h2 class="serif reveal d1">Let's talk about your place</h2>
-    <p class="reveal d2">Whether you're planning works to a heritage property, need a heritage impact statement, or want strategic heritage advice, Jo would be glad to hear from you — by email or text.</p>
+    <p class="reveal d2">Whether you're planning works to a heritage property, need a heritage impact statement, or want advice on maintenance and repairs, Jo would be glad to hear from you. Email or message is the best way to reach her.</p>
     <div class="reveal d3" style="margin-top:8px;">
       <a class="mail" href="mailto:hello@joguardheritage.com.au">hello@joguardheritage.com.au</a>
     </div>
-    <div class="phone reveal d4">Call or text: 0XXX XXX XXX <span class="tbc">Number to be confirmed</span></div>
     <div class="socials reveal d5">
       <a href="https://www.instagram.com/joguardheritage" target="_blank" rel="noopener" aria-label="Instagram — @joguardheritage" title="Instagram">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
