@@ -15,11 +15,11 @@
     --ink-soft:#4a4a46;
     --black:#141414;
     --black-deep:#0b0b0a;
-    --sage:#7d8b6f;
-    --sage-deep:#5c6b50;
-    --sage-soft:#a9b89c;
-    --sage-tint:#eef1e9;
-    --sage-band:#9fb091;     /* section background sage */
+    --sage:#93b276;          /* brand sage — Jo's chosen green */
+    --sage-deep:#5e7a44;     /* darker shade for text/accents */
+    --sage-soft:#b6cc9f;     /* light shade for soft borders */
+    --sage-tint:#eaf2e2;     /* very light tint for backgrounds */
+    --sage-band:#93b276;     /* section background sage */
     --line:#e0e3da;
     --white:#ffffff;
   }
@@ -282,7 +282,7 @@
   .contact{background:var(--black-deep);color:#e8e8e4;position:relative;overflow:hidden}
   .contact::before{
     content:"";position:absolute;top:-120px;right:-120px;width:340px;height:340px;
-    border-radius:50%;background:radial-gradient(circle,rgba(125,139,111,.25) 0%,transparent 70%);
+    border-radius:50%;background:radial-gradient(circle,rgba(147,178,118,.25) 0%,transparent 70%);
     animation:drift 9s ease-in-out infinite;
   }
   .contact .wrap{position:relative}
