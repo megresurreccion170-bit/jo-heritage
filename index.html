@@ -63,6 +63,17 @@
   .figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
   .figure:hover img{transform:scale(1.04)}
 
+  /* About media column: Jo's portrait + Willow stacked */
+  .about-media{display:flex;flex-direction:column;gap:22px}
+  .about-willow{aspect-ratio:4/5}
+
+  /* Full-width photographic divider band */
+  .photo-band{
+    position:relative;overflow:hidden;border-radius:0;
+    width:100%;height:clamp(240px,40vw,460px);
+  }
+  .photo-band img{object-position:center 42%}
+
   /* ENTRANCE + SCROLL-REVEAL ANIMATIONS */
   @keyframes fadeUp{
     from{opacity:0;transform:translateY(26px)}
@@ -378,9 +389,15 @@
         <p>Jo brings a rare, inside understanding of how the heritage system actually works — from the detail of permits and consents through to strategic policy and the workings of statutory decision-making. She has served as Manager of Heritage Permits and Consents and as Heritage Operations Manager at Heritage Victoria, as a long-standing Heritage Adviser to Mitchell Shire Council, and as a member of the Heritage Council of Victoria.</p>
         <p>That breadth means clients get advice that is both technically rigorous and genuinely pragmatic — grounded in what decision-makers look for, and focused on getting good outcomes for significant places.</p>
       </div>
-      <div class="figure about-photo reveal d2" title="Jo Guard">
-        <img src="images/jo-portrait.jpg" alt="Jo Guard, heritage consultant">
-        <div class="cap">Jo Guard</div>
+      <div class="about-media reveal d2">
+        <div class="figure about-photo" title="Jo Guard">
+          <img src="images/jo-portrait.jpg" alt="Jo Guard, heritage consultant">
+          <div class="cap">Jo Guard</div>
+        </div>
+        <div class="figure about-willow" title="Willow, the office dog">
+          <img src="images/willow.jpg" alt="Willow, the office dog">
+          <div class="cap">Willow, the office dog</div>
+        </div>
       </div>
     </div>
     <div class="glance reveal">
@@ -395,6 +412,11 @@
     </div>
   </div>
 </section>
+
+<div class="photo-band figure reveal" title="Princes Bridge, Melbourne">
+  <img src="images/princes-bridge.jpg" alt="Princes Bridge over the Yarra River, Melbourne">
+  <div class="cap">Princes Bridge, Melbourne</div>
+</div>
 
 <section id="services" class="sage-band">
   <div class="wrap">
@@ -488,12 +510,13 @@
 
 <section id="experience" class="sage-band" style="border-top:1px solid rgba(11,11,10,.12);">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Experience</span>
-      <h2 class="serif">A career built inside the heritage system</h2>
-    </div>
     <div class="exp-grid">
-      <div class="timeline">
+      <div class="exp-left">
+        <div class="section-head reveal">
+          <span class="eyebrow">Experience</span>
+          <h2 class="serif">A career built inside the heritage system</h2>
+        </div>
+        <div class="timeline">
         <div class="tl-item reveal">
           <div class="tl-date">2023 — Present</div>
           <div class="tl-body">
@@ -532,6 +555,7 @@
             <div class="org">Heritage Victoria · Victorian State Government</div>
             <p>Following earlier heritage roles in local and state government in the United Kingdom.</p>
           </div>
+        </div>
         </div>
       </div>
       <div class="exp-photos">
