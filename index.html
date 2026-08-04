@@ -81,10 +81,8 @@
   .figure img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
   .figure:hover img{transform:scale(1.04)}
 
-  /* About media column: Jo's portrait + Willow stacked */
+  /* About media column: Jo's portrait */
   .about-media{display:flex;flex-direction:column;gap:22px}
-  .about-willow{aspect-ratio:1/1}
-  .about-willow img{object-position:center 55%}
 
   /* Full-width photographic divider band */
   .photo-band{
@@ -148,7 +146,7 @@
   .nav-links a:hover{color:var(--black)}
   .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
   .nav-cta{border:1px solid var(--black);color:var(--black);padding:9px 20px;border-radius:2px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:all .3s}
-  .nav-cta:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+  .nav-cta:hover{background:var(--sage);color:var(--white);border-color:var(--sage)}
   .menu-btn{display:none}
   @media(max-width:860px){
     .nav-links,.nav-cta{display:none}
@@ -247,7 +245,8 @@
   .memberships .ph{min-height:150px;max-width:760px}
 
   /* TESTIMONIALS — sliding carousel */
-  .carousel{position:relative;max-width:820px;margin:0 auto;overflow:hidden}
+  .carousel{position:relative;max-width:820px;margin:0 auto}
+  .c-viewport{overflow:hidden}
   .c-track{display:flex;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
   .c-slide{flex:0 0 100%;padding:10px 8px 0}
   .c-card{
@@ -259,14 +258,21 @@
     color:var(--ink);margin-bottom:16px;font-style:italic;
   }
   .c-card figcaption{font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sage-deep);font-weight:500}
-  .c-nav{display:flex;align-items:center;justify-content:center;gap:18px;margin-top:26px}
   .c-btn{
-    background:transparent;border:1px solid var(--black-deep);color:var(--black-deep);
+    background:var(--white);border:1px solid var(--black-deep);color:var(--black-deep);
     width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
     transition:background .3s,color .3s;
   }
   .c-btn:hover{background:var(--black-deep);color:var(--white)}
-  .c-dots{display:flex;gap:8px}
+  .c-prev,.c-next{position:absolute;top:50%;transform:translateY(-50%);z-index:2;box-shadow:0 6px 18px rgba(20,20,20,.12)}
+  .c-prev{left:-58px}
+  .c-next{right:-58px}
+  @media(max-width:900px){
+    .c-prev{left:4px}
+    .c-next{right:4px}
+  }
+  .c-dots{display:flex;justify-content:center;gap:8px;margin-top:26px}
   .c-dot{width:8px;height:8px;border-radius:50%;border:1px solid var(--black-deep);background:transparent;cursor:pointer;padding:0;transition:background .3s,transform .3s}
   .c-dot.active{background:var(--black-deep);transform:scale(1.25)}
 
@@ -299,12 +305,20 @@
 
   /* CONTACT */
   .contact{background:var(--black-deep);color:#e8e8e4;position:relative;overflow:hidden}
+  .contact .wrap{position:relative;display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:center}
+  .contact-media{border-radius:4px;overflow:hidden;position:relative;aspect-ratio:3/4}
+  .contact-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .contact-media::after{content:"";position:absolute;inset:0;background:rgba(11,11,10,.15)}
+  @media(max-width:800px){
+    .contact .wrap{grid-template-columns:1fr}
+    .contact-media{aspect-ratio:16/9;order:2}
+    .contact-content{order:1}
+  }
   .contact::before{
     content:"";position:absolute;top:-120px;right:-120px;width:340px;height:340px;
     border-radius:50%;background:radial-gradient(circle,rgba(147,178,118,.25) 0%,transparent 70%);
     animation:drift 9s ease-in-out infinite;
   }
-  .contact .wrap{position:relative}
   .contact .eyebrow{color:var(--sage-soft)}
   .contact h2{color:var(--white);font-size:clamp(2rem,4vw,3rem)}
   .contact p{color:#c9c9c2;max-width:56ch}
@@ -330,19 +344,20 @@
 
   /* FOOTER + banner placeholder */
   .foot-banner{
-    padding:56px 0;position:relative;
+    padding:70px 0;position:relative;
     background:#2a211c url('images/brick-wall.jpg') center/cover;
     display:flex;align-items:center;justify-content:center;
   }
-  .foot-banner::before{content:"";position:absolute;inset:0;background:rgba(11,11,10,.32)}
-  .foot-banner-window{
-    position:relative;width:200px;aspect-ratio:3/4;padding:10px;
-    background:var(--white);border:1px solid rgba(255,255,255,.7);
-    box-shadow:0 22px 55px rgba(0,0,0,.45);
-    transition:transform .5s cubic-bezier(.22,.61,.36,1);
+  .foot-banner::before{content:"";position:absolute;inset:0;background:rgba(11,11,10,.6)}
+  .foot-banner .wrap{position:relative}
+  .foot-banner p{
+    max-width:70ch;font-size:.9rem;line-height:1.75;font-style:italic;
+    color:#f1f1ec;
   }
-  .foot-banner-window:hover{transform:translateY(-4px)}
-  .foot-banner-window img{display:block;width:100%;height:100%;object-fit:cover}
+  .foot-banner .aoc-label{
+    display:block;font-style:normal;font-size:.7rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--sage-soft);margin-bottom:12px;
+  }
   footer.site{background:var(--black-deep);color:#9c9c94;padding:34px 0;border-top:1px solid rgba(255,255,255,.08)}
   .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.82rem}
   .foot-inner img{height:56px;opacity:.9;transition:opacity .3s}
@@ -353,23 +368,11 @@
     color:#9c9c94;transition:color .3s,transform .3s;
   }
   .foot-social a:hover{color:var(--sage-soft);transform:translateY(-2px)}
-  .acknowledgement{
-    background:var(--black-deep);color:#b7b7ae;
-    border-top:1px solid rgba(255,255,255,.08);
-  }
-  .acknowledgement .wrap{padding-top:34px;padding-bottom:34px}
-  .acknowledgement p{
-    max-width:70ch;font-size:.9rem;line-height:1.75;font-style:italic;
-    color:#c2c2ba;
-  }
-  .acknowledgement .aoc-label{
-    display:block;font-style:normal;font-size:.7rem;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--sage-soft);margin-bottom:12px;
-  }
 
   /* ===== Content & colour update ===== */
-  /* Hero — soft sage wash so the front page carries colour */
-  .hero{background:linear-gradient(180deg,var(--sage-tint) 0%,#f6f9f1 100%)}
+  /* Hero — matches the "How Jo Can Help" sage-band section */
+  .hero{background:var(--sage-band)}
+  .hero .eyebrow{color:var(--black)}
 
   /* Intro / welcome band (Jo's personal voice) */
   .intro{background:var(--sage-tint);border-bottom:1px solid var(--line)}
@@ -441,7 +444,7 @@
     <p class="intro-lead reveal">"Heritage places aren't frozen in time — they can usually sustain change, and that's what I can help with."</p>
     <div class="intro-body reveal d1">
       <p>Bringing historic buildings back to life, or making the most of them through sensitive change, is an exciting journey — but finding your way through complex heritage planning laws can feel overwhelming. Whether you're altering or repairing a treasured landmark, or designing a modern development next to a heritage place, every choice affects the history around it.</p>
-      <p>That's where a heritage consultant comes in. As a specialist in historic architecture and planning legislation, I can help unlock your site's potential — understanding a building's past, context and true significance to build a robust, persuasive case for the changes you want to make.</p>
+      <p>That's where a heritage consultant comes in. As a specialist in historic buildings architecture and heritage planning legislation, I can help unlock your site's potential — understanding a building's past, context and true significance to build a robust, persuasive case for the changes you want to make</p>
       <p>For over 30 years I've worked to preserve and enhance some of Victoria's most important historic places, while helping them continue to meet the needs of modern owners. I can slot into your existing design team or work as a standalone service — together, we can turn your vision from an idea into an enduring reality.</p>
     </div>
     <div class="intro-points">
@@ -455,7 +458,7 @@
       </div>
       <div class="ipoint reveal d2">
         <h3 class="serif">Protecting the future</h3>
-        <p>Sustainable results and long-term maintenance plans.</p>
+        <p>Facilitating ongoing building use, with sympathetic, sustainable alteration and repairs.</p>
       </div>
     </div>
   </div>
@@ -467,9 +470,9 @@
       <div class="reveal">
         <span class="eyebrow">About Jo</span>
         <h2 class="serif" style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin:14px 0 26px;">Decades of knowledge and experience, working for you</h2>
-        <p>Jo Guard is a heritage consultant based in Victoria, with a career spanning local and state government heritage practice in Australia and the United Kingdom. After many years managing heritage development, policy and decisions from within government, she founded Jo Guard Heritage in 2023 to provide independent, client-focused advice.</p>
-        <p>Jo brings a rare, inside understanding of how the heritage system actually works — from the detail of permits and repairs through to strategic policy and the workings of statutory decision-making. She has worked across all areas of Heritage Victoria, culminating as Heritage Operations Manager, been the long-standing Heritage Adviser to Mitchell Shire Council, and served two terms as a member of the Heritage Council of Victoria.</p>
-        <p>That background means clients get advice that is both technically rigorous and genuinely pragmatic — grounded in what decision-makers look for, and focused on getting good outcomes for significant places.</p>
+        <p>I'm a heritage consultant based in Victoria, with a career spanning local and state government heritage practice in Australia and the United Kingdom. After many years managing heritage development, policy and decisions from within government, I founded Jo Guard Heritage in 2023 to provide independent, client-focused advice.</p>
+        <p>I bring a rare, inside understanding of how the heritage system actually works — from the detail of permits and repairs through to strategic policy and the workings of statutory decision-making. I've worked across all areas of Heritage Victoria, culminating as Heritage Operations Manager, been the long-standing Heritage Adviser to Mitchell Shire Council, and served two terms as a member of the Heritage Council of Victoria.</p>
+        <p>That background means I can offer advice that's both technically rigorous and genuinely pragmatic — grounded in what decision-makers look for, and focused on getting good outcomes for significant places.</p>
         <div class="glance">
           <h3 class="serif">At a glance</h3>
           <ul>
@@ -485,17 +488,13 @@
           <img src="images/jo-portrait.jpg" alt="Jo Guard, heritage consultant">
           <div class="cap">Jo Guard</div>
         </div>
-        <div class="figure about-willow" title="Willow, the office dog">
-          <img src="images/willow.jpg" alt="Willow, the office dog">
-          <div class="cap">Willow, the office dog</div>
-        </div>
       </div>
     </div>
   </div>
 </section>
 
 <div class="photo-band figure reveal" title="Princes Bridge, Melbourne">
-  <img src="images/princes-bridge.jpg" alt="Princes Bridge over the Yarra River, Melbourne">
+  <img src="images/princes-bridge.jpg" alt="Princes Bridge, Princes Walk Vaults, and Federation Square, Melbourne — places I worked on extensively while at Heritage Victoria and the Heritage Council of Victoria, contributing to the conservation and ongoing management of some of Melbourne's most significant public heritage sites.">
   <div class="cap">Princes Bridge, Melbourne</div>
 </div>
 
@@ -503,7 +502,7 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Services</span>
-      <h2 class="serif">How Jo can help</h2>
+      <h2 class="serif">How I can help</h2>
     </div>
     <div class="svc-grid">
       <div class="svc reveal">
@@ -536,11 +535,11 @@
         <p>Independent review, peer review and strategic input on heritage listings, policy and studies — informed by experience on both sides of the statutory process.</p>
       </div>
       <div class="svc svc-img figure reveal d2" title="Southwark Cathedral, London">
-        <img src="images/southwark-flint-wall.jpg" alt="Hands resting on the flint wall of Southwark Cathedral, London">
+        <img src="images/southwark-flint-wall.jpg" alt="Southwark Cathedral, London — exploring one of London's oldest and most storied buildings with my son, and sharing a love of historic architecture across generations.">
         <div class="cap">Southwark Cathedral, London</div>
       </div>
     </div>
-    <p class="services-note reveal">Not sure which you need? A short initial conversation is the best place to start — get in touch and Jo will point you in the right direction.</p>
+    <p class="services-note reveal">Not sure which you need? A short initial conversation is the best place to start — get in touch and I'll point you in the right direction.</p>
   </div>
 </section>
 
@@ -575,7 +574,8 @@
       <h2 class="serif">What clients say</h2>
     </div>
     <div class="carousel reveal" id="tst" aria-roledescription="carousel" aria-label="Client testimonials">
-      <div class="c-track">
+      <div class="c-viewport">
+        <div class="c-track">
         <figure class="c-slide">
           <div class="c-card">
             <blockquote>"Working with Jo over the past two years has made the heritage planning process much easier. Her fees are fair and reasonable, her turnaround times are consistently quick, and she is always easy to work with. She took the stress out of the process by providing clear advice, practical guidance and prompt responses whenever I had questions. I would highly recommend Jo to anyone looking for knowledgeable, reliable and responsive heritage planning assistance."</blockquote>
@@ -594,12 +594,20 @@
             <figcaption>Ben Stapleton · Pyalong</figcaption>
           </div>
         </figure>
+        <figure class="c-slide">
+          <div class="c-card">
+            <blockquote>"When we were repairing and upgrading the Tallarook pub to reopen it, we sought a site meeting with Council's Heritage Advisor. We thought we might encounter some delays to our work schedule, but instead Jo actually suggested we add future works to our planning application, as she was able to assess everything at once. We did this, and received our planning permit swiftly, saving us time and money, and enabling us to keep to our schedule."</blockquote>
+            <figcaption>James Carlin · Latitude 37 Pubs</figcaption>
+          </div>
+        </figure>
       </div>
-      <div class="c-nav">
-        <button class="c-btn" id="c-prev" aria-label="Previous testimonial">&#8592;</button>
-        <div class="c-dots" id="c-dots"></div>
-        <button class="c-btn" id="c-next" aria-label="Next testimonial">&#8594;</button>
-      </div>
+      <button class="c-btn c-prev" id="c-prev" aria-label="Previous testimonial">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <button class="c-btn c-next" id="c-next" aria-label="Next testimonial">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <div class="c-dots" id="c-dots"></div>
     </div>
   </div>
 </section>
@@ -618,7 +626,7 @@
           <div class="tl-body">
             <h3 class="serif">Heritage Consultant &amp; Founder</h3>
             <div class="org">Jo Guard Heritage</div>
-            <p>Independent heritage consultancy providing advice to owners, councils and other decision-makers, and communities across Victoria.</p>
+            <p>I provide independent heritage consultancy advice to owners, councils and other decision-makers, and communities across Victoria.</p>
           </div>
         </div>
         <div class="tl-item reveal d1">
@@ -634,7 +642,7 @@
           <div class="tl-body">
             <h3 class="serif">Member</h3>
             <div class="org">Heritage Council of Victoria</div>
-            <p>Sat on Permit and Assessment Appeal Hearing panels, and the Communications, Finance, and Heritage Policy &amp; Practice Committees. Passionate about sustainability, Jo was part of the steering group that delivered the Heritage Council's guidance on Heritage and Climate Change — the first of its kind in Australia.</p>
+            <p>Sat on Permit and Assessment Appeal Hearing panels, and the Communications, Finance, and Heritage Policy &amp; Practice Committees. Passionate about sustainability, I was part of the steering group that delivered the Heritage Council's guidance on Heritage and Climate Change — the first of its kind in Australia.</p>
           </div>
         </div>
         <div class="tl-item reveal d3">
@@ -642,7 +650,7 @@
           <div class="tl-body">
             <h3 class="serif">Roles across Heritage Victoria</h3>
             <div class="org">Victorian State Government</div>
-            <p>Beginning with what was meant to be a one-year exchange as a permits officer, Jo worked across the organisation, ending her time there as Heritage Operations Manager.</p>
+            <p>Beginning with what was meant to be a one-year exchange as a permits officer, I worked across the organisation, ending my time there as Heritage Operations Manager.</p>
           </div>
         </div>
         <div class="tl-item reveal d4">
@@ -655,9 +663,9 @@
         </div>
       </div>
       <div class="exp-photos">
-        <div class="figure reveal" title="Whitburgh Cottage"><img src="images/whitburgh-cottage.jpg" alt="Whitburgh Cottage, bluestone heritage cottage"><div class="cap">Whitburgh Cottage</div></div>
-        <div class="figure reveal d1" title="State Library of Victoria"><img src="images/state-library.jpg" alt="La Trobe Reading Room, State Library of Victoria"><div class="cap">State Library of Victoria</div></div>
-        <div class="figure reveal d2" title="Tallarook Hotel"><img src="images/tallarook-hotel.jpg" alt="Tallarook Hotel"><div class="cap">Tallarook Hotel</div></div>
+        <div class="figure reveal" title="Whitburgh Cottage"><img src="images/whitburgh-cottage.jpg" alt="Whitburgh Cottage, Kilmore, Victoria — a heritage cottage brought back to life through careful, considered restoration, now ready for a new use and a new chapter."><div class="cap">Whitburgh Cottage</div></div>
+        <div class="figure reveal d1" title="State Library of Victoria"><img src="images/state-library.jpg" alt="La Trobe Reading Room, State Library of Victoria — one of Melbourne's most iconic heritage interiors, a space that speaks to the enduring value of thoughtful conservation."><div class="cap">State Library of Victoria</div></div>
+        <div class="figure reveal d2" title="Tallarook Hotel"><img src="images/tallarook-hotel.jpg" alt="The Tallarook Hotel, Tallarook, Victoria — a much-loved country pub, open once again following a sensitive program of repairs and updating that honoured its history while securing its future."><div class="cap">Tallarook Hotel</div></div>
       </div>
     </div>
   </div>
@@ -665,11 +673,15 @@
 
 <section id="contact" class="contact">
   <div class="wrap">
+    <div class="contact-media reveal">
+      <img src="images/brick-wall.jpg" alt="Detail of a historic brick wall">
+    </div>
+    <div class="contact-content">
     <span class="eyebrow reveal">Contact</span>
     <h2 class="serif reveal d1">Let's talk about your place</h2>
-    <p class="reveal d2">Whether you're planning works to a heritage property, need a heritage impact statement, or want advice on maintenance and repairs, Jo would be glad to hear from you. Email or message is the best way to reach her.</p>
+    <p class="reveal d2">Whether you're planning works to a heritage property, need a heritage impact statement, or want advice on maintenance and repairs, I'd be glad to hear from you. Email or message is the best way to reach me.</p>
     <div class="reveal d3" style="margin-top:8px;">
-      <a class="mail" href="mailto:hello@joguardheritage.com.au">hello@joguardheritage.com.au</a>
+      <a class="mail" href="mailto:joguardheritage@gmail.com">joguardheritage@gmail.com</a>
     </div>
     <div class="socials reveal d5">
       <a href="https://www.instagram.com/joguardheritage" target="_blank" rel="noopener" aria-label="Instagram — @joguardheritage" title="Instagram">
@@ -683,23 +695,18 @@
       </a>
     </div>
     <div class="meta reveal d5">Jo Guard Heritage · Victoria, Australia</div>
+    </div>
   </div>
 </section>
 
-<div class="foot-banner" title="Whitburgh Cottage window">
-  <div class="foot-banner-window">
-    <img src="images/cottage-window.jpg" alt="View through the window of Whitburgh Cottage">
-  </div>
-</div>
-
-<section class="acknowledgement">
+<div class="foot-banner">
   <div class="wrap reveal">
     <p>
       <span class="aoc-label">Acknowledgement of Country</span>
       I acknowledge the Taungurung People as the Traditional Owners and Custodians of the land and waters on which I live and work. I pay my respects to their Elders past and present, and extend that respect to all First Nations peoples. Sovereignty was never ceded.
     </p>
   </div>
-</section>
+</div>
 
 <footer class="site">
   <div class="wrap foot-inner">
@@ -711,7 +718,7 @@
       <a href="https://www.linkedin.com/in/jo-guard-75031b28" target="_blank" rel="noopener" aria-label="LinkedIn — Jo Guard" title="LinkedIn">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-4.9c0-1.17-.02-2.67-1.9-2.67-1.9 0-2.2 1.28-2.2 2.6V21H9z"/></svg>
       </a>
-      <a href="mailto:hello@joguardheritage.com.au" aria-label="Email — hello@joguardheritage.com.au" title="Email">
+      <a href="mailto:joguardheritage@gmail.com" aria-label="Email — joguardheritage@gmail.com" title="Email">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6l9 6.5L21 6"/></svg>
       </a>
     </div>
@@ -767,7 +774,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   function restart(){
     if(reduced) return;
     clearInterval(timer);
-    timer = setInterval(function(){ go(idx + 1); }, 6000);
+    timer = setInterval(function(){ go(idx + 1); }, 9000);
   }
   document.getElementById('c-prev').addEventListener('click', function(){ go(idx - 1); restart(); });
   document.getElementById('c-next').addEventListener('click', function(){ go(idx + 1); restart(); });
