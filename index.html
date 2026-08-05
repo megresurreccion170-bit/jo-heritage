@@ -185,9 +185,29 @@
   .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
   .nav-cta{border:1px solid var(--black);color:var(--black);padding:9px 20px;border-radius:2px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:all .3s}
   .nav-cta:hover{background:var(--sage);color:var(--white);border-color:var(--sage)}
-  .menu-btn{display:none}
+  .menu-btn{
+    display:none;background:none;border:none;color:var(--black);
+    padding:6px;cursor:pointer;align-items:center;justify-content:center;
+  }
+  .mobile-menu{
+    display:none;flex-direction:column;
+    max-height:0;overflow:hidden;
+    background:var(--white);border-top:1px solid var(--line);
+    transition:max-height .35s ease;
+  }
+  .mobile-menu.open{max-height:340px}
+  .mobile-menu a{
+    padding:16px 24px;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--ink-soft);border-bottom:1px solid var(--line);
+  }
+  .mobile-menu a.mobile-cta{
+    margin:16px 24px;text-align:center;border-radius:2px;
+    border:1px solid var(--black);color:var(--black);font-weight:500;
+  }
   @media(max-width:860px){
     .nav-links,.nav-cta{display:none}
+    .menu-btn{display:flex}
+    .mobile-menu{display:flex}
   }
 
   /* HERO */
@@ -352,7 +372,7 @@
   .contact-media::after{content:"";position:absolute;inset:0;background:rgba(11,11,10,.15)}
   @media(max-width:800px){
     .contact .wrap{grid-template-columns:1fr}
-    .contact-media{aspect-ratio:16/9;order:2}
+    .contact-media{aspect-ratio:21/9;max-height:160px;order:2}
     .contact-content{order:1}
   }
   .contact::before{
@@ -471,7 +491,19 @@
       <a href="#contact">Contact</a>
     </nav>
     <a class="nav-cta" href="#contact">Get in touch</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
   </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+    <a class="mobile-cta" href="#contact">Get in touch</a>
+  </nav>
 </header>
 
 <a id="top"></a>
@@ -774,12 +806,30 @@
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6l9 6.5L21 6"/></svg>
       </a>
     </div>
-    <div>© <span id="yr"></span> Jo Guard Heritage · joguardheritage.com.au</div>
+    <div>© <span id="yr"></span> Jo Guard Heritage · joguardheritage.com.au · <a href="privacy-policy.html" style="color:inherit;text-decoration:underline;">Privacy Policy</a></div>
   </div>
 </footer>
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Mobile hamburger menu toggle
+(function(){
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('mobileMenu');
+  if(!btn || !menu) return;
+  function close(){
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+  }
+  btn.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', close);
+  });
+})();
 
 // Scroll-reveal: fade elements in as they enter the viewport
 (function(){
@@ -826,7 +876,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   function restart(){
     if(reduced) return;
     clearInterval(timer);
-    timer = setInterval(function(){ go(idx + 1); }, 9000);
+    timer = setInterval(function(){ go(idx + 1); }, 15000);
   }
   document.getElementById('c-prev').addEventListener('click', function(){ go(idx - 1); restart(); });
   document.getElementById('c-next').addEventListener('click', function(){ go(idx + 1); restart(); });
