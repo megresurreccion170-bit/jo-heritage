@@ -423,6 +423,13 @@
   .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:.82rem}
   .foot-inner img{height:56px;opacity:.9;transition:opacity .3s}
   .foot-inner img:hover{opacity:1}
+  .foot-legal{
+    text-align:center;font-size:.78rem;color:#7d7d76;
+    margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);
+  }
+  .foot-legal-links{margin-top:8px}
+  .foot-legal a{color:#9c9c94;text-decoration:none}
+  .foot-legal a:hover{color:var(--sage-soft);text-decoration:underline}
   .foot-social{display:flex;gap:18px;align-items:center}
   .foot-social a{
     display:inline-flex;align-items:center;justify-content:center;
@@ -806,7 +813,10 @@
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 6l9 6.5L21 6"/></svg>
       </a>
     </div>
-    <div>© <span id="yr"></span> Jo Guard Heritage · joguardheritage.com.au · <a href="privacy-policy.html" style="color:inherit;text-decoration:underline;">Privacy Policy</a></div>
+  </div>
+  <div class="foot-legal">
+    <div>© <span id="yr"></span> Jo Guard Heritage &nbsp;—&nbsp; ABN 38 960 568 482</div>
+    <div class="foot-legal-links"><a href="privacy-policy.html">Privacy Policy</a></div>
   </div>
 </footer>
 
